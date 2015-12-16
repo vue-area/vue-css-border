@@ -1,0 +1,21 @@
+body{padding:10px 20px;}
+ul{margin:0;list-style: none;}
+.f-cb:after,.f-cbli li:after{display:block;clear:both;visibility:hidden;height:0;overflow:hidden;content:".";}
+.f-cb,.f-cbli li{zoom:1;}
+.f-fl{float:left;}
+.f-fr{float:right;}
+.box {margin-right:20px;}
+.tool{border-left: 1px solid #999;}
+.tool li * {float: left;display: inline-block;min-width:60px;margin-left: 5px;}
+.a-rotate{
+  animation: 2s linear 0s normal none infinite rotate;
+  -webkit-animation:2s linear 0s normal none infinite rotate;
+}
+@-webkit-keyframes rotate{
+  from{-webkit-transform:rotate(0deg)}
+  to{-webkit-transform:rotate(360deg)}
+}
+@keyframes rotate{
+  from{-webkit-transform:rotate(0deg)}
+  to{-webkit-transform:rotate(360deg)}
+}

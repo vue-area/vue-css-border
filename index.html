@@ -3,47 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>play with css border</title>
-<style>
-body{
-  padding:10px 20px;
-}
-ul{
-  margin:0;
-  list-style: none;
-}
-.f-cb:after,.f-cbli li:after{display:block;clear:both;visibility:hidden;height:0;overflow:hidden;content:".";}
-.f-cb,.f-cbli li{zoom:1;}
-.f-fl{float:left;}
-.f-fr{float:right;}
-.box {
-  margin-right:20px;
-}
-.tool{
-  border-left: 1px solid #999;
-}
-.tool li *{
-  float: left;
-  display: inline-block;
-  min-width:60px;
-  margin-left: 5px;
-}
-.a-rotate{
-  animation: 2s linear 0s normal none infinite rotate;
-  -webkit-animation:2s linear 0s normal none infinite rotate;
-}
-@-webkit-keyframes rotate{
-  from{-webkit-transform:rotate(0deg)}
-  to{-webkit-transform:rotate(360deg)}
-}
-@keyframes rotate{
-  from{-webkit-transform:rotate(0deg)}
-  to{-webkit-transform:rotate(360deg)}
-}
-</style>
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
 <h1>play with css border</h1>
-<div id="app" >
+<div id="app">
   <div class="main f-cb">
     <div class="box f-fl" :class="animate" :style="style">
     </div>
@@ -76,6 +40,7 @@ ul{
     </ul>    
   </div>
   <div style="margin-top:10px;">
+    <button @click="tri('normal')">初始</button>
     <button @click="tri('left')">左三角</button>
     <button @click="tri('right')">右三角</button>
     <button @click="tri('top')">上三角</button>
@@ -83,210 +48,17 @@ ul{
     <button @click="tri('square')">四色方块</button>
   </div>
 </div>
+
 <!-- fork me on github -->
-<a href="https://github.com/yangjunjun/css-border"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+<a href="https://github.com/yangjunjun/css-border">
+  <img style="position: absolute; top: 0; right: 0; border: 0;" 
+  src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" 
+  alt="Fork me on GitHub" 
+  data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
+</a>
+<!-- /fork me on github -->
+
 <script src="http://vuejs.org/js/vue.min.js"></script>   
-<script>
-var triangle = {
-  normal:{
-    animate:'',
-    size: 50,
-    backgroundColor: '#ffffff',
-    border:{
-      top: {
-        color: '#ff08ff',
-        style: 'solid',
-        width: 20
-      },
-      left: {
-        color: '#00ff00',
-        style: 'solid',
-        width: 20
-      },
-      right: {
-        color: '#0080ff',
-        style: 'solid',
-        width: 20
-      },
-      bottom:{
-        color: '#0000ff',
-        style: 'solid',
-        width: 20       
-      }
-    }
-  },  
-  left:{
-    size: 0,
-    backgroundColor: '#ffffff',
-    border:{
-      top: {
-        color: '#ffffff',
-        style: 'solid',
-        width: 20
-      },
-      right: {
-        color: '#0080ff',
-        style: 'solid',
-        width: 20
-      },
-      bottom:{
-        color: '#ffffff',
-        style: 'solid',
-        width: 20       
-      },
-      left: {
-        color: '#00ff00',
-        style: 'solid',
-        width: 0
-      }      
-    }
-  },
-  right:{
-    size: 0,
-    backgroundColor: '#ffffff',
-    border:{
-      top: {
-        color: '#ffffff',
-        style: 'solid',
-        width: 20
-      },
-      right: {
-        color: '#0080ff',
-        style: 'solid',
-        width: 0
-      },
-      bottom:{
-        color: '#ffffff',
-        style: 'solid',
-        width: 20       
-      },
-      left: {
-        color: '#00ff00',
-        style: 'solid',
-        width: 20
-      }      
-    }
-  },
-  top:{
-    size: 0,
-    backgroundColor: '#ffffff',
-    border:{
-      top: {
-        color: '#ff08ff',
-        style: 'solid',
-        width: 20
-      },
-      right: {
-        color: '#ffffff',
-        style: 'solid',
-        width: 20
-      },
-      bottom:{
-        color: '#ffffff',
-        style: 'solid',
-        width: 0    
-      },
-      left: {
-        color: '#ffffff',
-        style: 'solid',
-        width: 20
-      }      
-    }
-  },
-  bottom:{
-    size: 0,
-    backgroundColor: '#ffffff',
-    border:{
-      top: {
-        color: '#ffffff',
-        style: 'solid',
-        width: 0
-      },
-      right: {
-        color: '#ffffff',
-        style: 'solid',
-        width: 20
-      },
-      bottom:{
-        color: '#0000ff',
-        style: 'solid',
-        width: 20    
-      },
-      left: {
-        color: '#ffffff',
-        style: 'solid',
-        width: 20
-      }      
-    }
-  },
-  square:{
-    animate:'a-rotate',
-    size: 0,
-    backgroundColor: '#ffffff',
-    border:{
-      top: {
-        color: '#ff08ff',
-        style: 'solid',
-        width: 50
-      },
-      right: {
-        color: '#0080ff',
-        style: 'solid',
-        width: 50
-      },
-      bottom:{
-        color: '#0000ff',
-        style: 'solid',
-        width: 50 
-      },
-      left: {
-        color: '#00ff00',
-        style: 'solid',
-        width: 50
-      }      
-    }
-  } 
-};
-new Vue({
-  el: '#app',
-  data: triangle.normal,
-  computed: {
-    width: function(){
-      return this.size + 'px';
-    },    
-    height: function(){
-      return this.size + 'px';
-    },
-    borderTop: function(){
-      return [this.border.top.width + 'px', this.border.top.style, this.border.top.color].join(' ');
-    },
-    borderLeft: function(){
-      return [this.border.left.width + 'px', this.border.left.style, this.border.left.color].join(' ');
-    },
-    borderRight: function(){
-      return [this.border.right.width + 'px', this.border.right.style, this.border.right.color].join(' ');
-    },
-    borderBottom: function(){
-      return [this.border.bottom.width + 'px', this.border.bottom.style, this.border.bottom.color].join(' ');
-    },
-    style: function(){
-      return {
-        width: this.width,
-        height: this.height,
-        backgroundColor: this.backgroundColor,
-        borderTop: this.borderTop,
-        borderBottom: this.borderBottom,
-        borderLeft: this.borderLeft,
-        borderRight: this.borderRight
-      }
-    }   
-  },
-  methods: {
-    tri: function(direction) {
-      this.$data = triangle[direction];
-    }
-  }
-})
-</script>
+<script src="main.js"></script>   
 </body>
 </html>
