@@ -1,6 +1,6 @@
-## css border 
+## vue-css-border
 
-play online at: http://yangjunjun.github.io/css-border/
+a vue demo, play online at: http://vue-area.github.io/vue-css-border/
 
 ## screenshot
 
